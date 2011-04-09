@@ -9,6 +9,7 @@ set :keep_releases, 7
 set :repository, "git@github.com:arunasri/laha.git"
 set :use_sudo, false
 set :scm, :git
+set :rvm_type, :user
 #set :deploy_via, :copy
 set :ssh_options, {:port => 30000}
 default_run_options[:pty] = true
