@@ -7,7 +7,7 @@ server "173.255.234.137", :app, :web, :db, :primary => true
 
 set :user, 'deploy'
 set :keep_releases, 7
-set :repository, "git@github.com:neerajdotname/hamarabox.git"
+set :repository, "git@github.com:arunasri/laha.git"
 set :use_sudo, false
 set :scm, :git
 #set :deploy_via, :copy
