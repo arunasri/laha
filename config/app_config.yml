@@ -1,0 +1,44 @@
+common:
+  layout_page_title_desc: Happenings in India through video | hamaraBox
+  meta_desc_content: Keep up with happenings in India through video
+  meta_keywords: india, video, fashio, telegu, tv, cricket, stocks
+  page_title_base: hamarabox.com
+  page_author: hamarabox.com
+  from_email: hamarabox<hamarabox@gmail.com>
+  email_subject_prefix: '[hamaraBox]'
+
+  intercepted_emails_should_go_to: neeraj.cmu@gmail.com
+
+  admin_emails:
+   - neeraj.cmu@gmail.com
+   - neerajdotname@gmail.com
+   - pvdsubbarao@hotmail.com
+   - sreeflex@gmail.com
+   - hamarabox@gmail.com
+
+  hoptoad_api_key: ****
+
+  s3_bucket_name: ****
+  s3_access_key_id: ****
+  s3_secret_access_key: ****
+
+  #authsmtp_address: mail.authsmtp.com
+  #authsmtp_port: 2525
+  #authsmtp_user_name: ac38140
+  #authsmtp_password: ******
+
+  mad_mimi_user_email: neeraj.cmu@gmail.com
+  mad_mimi_api_key: ***
+  mad_mimi_promotion_name: hamaraBox
+
+development:
+  base_url: http://localhost:3010
+
+test:
+  base_url: http://localhost:3010
+
+staging:
+
+production:
+  base_url: http://hamaraBox.com
+  base_url_no_http: www.hamaraBox.com

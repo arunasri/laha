@@ -1,0 +1,20 @@
+#homepage .highlight {
+  color: #cc0000; }
+#homepage h1 {
+  font-size: 3em;
+  line-height: 1.2em;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: bold;
+  letter-spacing: 0; }
+#homepage .join_button_umbrella {
+  margin-left: 300px;
+  margin-top: 50px; }
+#homepage .join_button {
+  -moz-border-radius: 10px 10px 10px 10px;
+  background: none repeat scroll 0 0 #000000;
+  color: #FFFFFF;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: 8px 35px;
+  text-decoration: none; }

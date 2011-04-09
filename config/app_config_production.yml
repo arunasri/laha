@@ -1,0 +1,10 @@
+# This file is overriden by app_config_production file from the linode server.
+# This file is here to just indicate the keys that are available in production mode
+#
+# Any value mentioned here overrides the value loaded from app_config
+#
+production:
+  hoptoad_api_key: ab964a59c53cfb995d030e639cb091ee
+  s3_bucket_name: hamarawebtv
+  s3_access_key_id: 0R6QCF3V0RF98YB0TC02
+  s3_secret_access_key: cBvUcnMbci0H4QW4UxSNu3FZt1RsCc5jiKearC/y

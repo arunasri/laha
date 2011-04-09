@@ -1,0 +1,31 @@
+<div class='video'>
+
+  <div style='padding:0;margin:0;width:100%;'>
+    <div style='float:left;'>
+      &larr;
+      <%= link_to 'Back to videos list',
+                            watch_channel_url('hi', @video.channels.first.name, :anchor => "#{@video.id}") %>
+    </div>
+    <div style='float:right;width:100px;'>
+      <%= facebook_like(@video.id).html_safe %>
+    </div>
+
+    <% if current_user %>
+      <div style='float:right;width:100px;'>
+        <%= link_to 'Delete', @video, :method => :delete %>
+      </div>
+    <% end %>
+
+    <div class='clear'></div>
+  </div>
+
+  <br />
+  <br />
+  <div>
+    <%= div_for(video, :class => 'videobox', :link => video.youtube_id) do %>
+    <% end %>
+  </div>
+
+  <div class="video_title" style='margin-top:10px;'> <%= video.name %> </div>
+  <div class="video_title" style='margin-top:7px;'> <%= auto_link(video.description) %> </div>
+</div>

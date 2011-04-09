@@ -1,0 +1,58 @@
+<style>
+
+input[type="checkbox"] {
+    width: 1em;
+}
+
+textarea {
+    height: 15em;
+    width: 95%;
+}
+.best_in_place {
+    -moz-border-radius: 5px 5px 5px 5px;
+    cursor: pointer;
+}
+.best_in_place:hover, #user_account .do_hover {
+    background: url("/images/edit_icon.png") no-repeat scroll right center #CCCCCC;
+    padding-right: 1.5em;
+}
+.info_edit {
+    cursor: pointer;
+    float: right;
+}
+.purr {
+    background-color: #000000;
+    border: 2px solid #FFFFFF;
+    color: #FFFFFF;
+    padding: 20px;
+    position: fixed;
+    right: 15px;
+    top: 20px;
+    width: 324px;
+}
+.purr:hover .close {
+    background: url("/images/close_icon.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 25px;
+    position: absolute;
+    right: 3px;
+    text-indent: -9999px;
+    top: 5px;
+    width: 25px;
+}
+
+</style>
+
+<tr>
+  <td><%= render_iframe_box(video,:width=> 250,:height => 200) %></td>
+  <td><%= in_place_editor(video, :name) %> </td>
+  <td><%= in_place_editor(video, :description) %> </td>
+  <td><%= in_place_editor(video, :approved, "data-type" => "checkbox", "data-collection" => '["Yes","No"]') %> </td>
+  <td><%= in_place_editor(video, :language, "data-type" => "select", "data-collection" => '[["hindi","Hindi"],["telugu","Telugu"]]') %> </td>
+  <td><%= in_place_editor(video, :kind, "data-type" => "select", "data-collection" => '[["song","Song"],["lyric","Lyric"],["movie","Movie"],["trailer","Trailer"]]') %> </td>
+  <td><%= in_place_editor(video, :quality, "data-type" => "select", "data-collection" => '[["hd","Hd"],["high","High"],["medium","Medium"],["low","Low"]]') %> </td>
+  <td><%= link_to video.show_name, video.show ? edit_show_path(video.show) : "#" %> </td>
+  <td><%= link_to "Edit", edit_video_path(video), :method => :get %> </td>
+  <td><%= link_to 'Destroy', video, :confirm => 'Are you sure?', 
+    :method => :delete, :remote => true %></td>
+</tr>

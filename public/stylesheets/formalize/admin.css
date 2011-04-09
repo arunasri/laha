@@ -1,0 +1,99 @@
+@import 'reset.css';
+@import 'text.css';
+@import 'formalize.css';
+
+/* `Body
+----------------------------------------------------------------------------------------------------*/
+
+body {
+  background: #fff;
+  color: #000;
+}
+
+/* `Wrapper
+----------------------------------------------------------------------------------------------------*/
+
+#wrapper {
+  margin: 0 auto;
+  padding: 20px;
+  width: 1020px;
+}
+
+/* `Errors
+----------------------------------------------------------------------------------------------------*/
+
+label.error, span.fieldWithErrors, #error_explanation {
+  background: #ffc;
+  color: #c00;
+  font-style: italic;
+}
+
+input.error,
+select.error,
+textarea.error {
+  background-color: #fee;
+}
+
+/* `Table Layout
+----------------------------------------------------------------------------------------------------*/
+
+.horiz {
+  margin-top: -20px;
+  margin-left: -20px;
+}
+
+.horiz td {
+  padding: 20px 0 0 20px;
+}
+
+  #interestingTag, #ignoredTag {
+    height: 19px;
+  }
+
+  #tag-add{
+    height: 27px;
+    margin-left: 5px;
+  }
+
+  a.interest-tag {
+    background-color: #E0EAF1;
+    border-bottom: 1px solid #3E6D8E;
+    border-right: 1px solid #7F9FB6;
+    color: #3E6D8E;
+    font-size: 90%;
+    line-height: 2.4;
+    margin: 2px 2px 2px 0;
+    padding: 3px 4px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .delete-tag{
+    display: inline-block;
+  }
+
+  .edit_video{
+    width: 500px;
+    float:right;
+  }
+
+  .admin-video {
+    width: 480px;
+    float: left;
+  }
+
+.form_demo {
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.form_demo th, .form_demo td {
+    padding: 0 0 20px 10px;
+}
+
+.form_demo th {
+    padding-left: 30px;
+    white-space: nowrap;
+    width: 1px;
+    vertical-align: middle;
+  }

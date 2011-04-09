@@ -1,0 +1,6 @@
+<h1>Editing feed</h1>
+
+<%= render 'form' %>
+<%= render :partial => "/videos/table", :locals => { :search => @search, :videos => @videos }%>
+
+<%= link_to 'Back', feeds_path %>

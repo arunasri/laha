@@ -1,0 +1,7 @@
+<h1>Editing show</h1>
+<%= render 'form' %>
+<%= render :partial => "/videos/table", :locals => { 
+  :search => @search, :videos => @videos 
+} %>
+
+<%= link_to 'Back', shows_path %>

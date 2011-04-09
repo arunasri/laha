@@ -1,0 +1,61 @@
+header {
+  position: relative; }
+
+header nav {
+  position: absolute;
+  right: 0; }
+
+header nav a {
+  display: inline-block;
+  color: #ccc;
+  padding: .4em .8em;
+  text-decoration: none; }
+
+header nav a:hover {
+  color: #fff;
+  text-decoration: none; }
+
+header nav a.active {
+  color: #fff;
+  background: #575757;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px; }
+
+header nav {
+  top: 0px; }
+
+.logo {
+  margin-left: 20px; }
+
+.logo a {
+  position: relative;
+  display: block;
+  left: -20px;
+  color: #fff;
+  padding-top: 5px;
+  font-family: 'Yanone Kaffeesatz';
+  font-family: 'Merriweather';
+  text-decoration: none; }
+
+.logo a:hover {
+  color: #e9e6df;
+  text-decoration: none; }
+
+.logo a {
+  height: 20px;
+  font-size: 12px; }
+
+section.top {
+  margin-bottom: 0px;
+  background: #1d1d1d;
+  border-bottom: 1px solid #535353; }
+
+#current_project_name {
+  padding-top: 5px;
+  font-size: 30px; }
+  #current_project_name a {
+    color: #fff;
+    text-decoration: none; }
+  #current_project_name a:hover {
+    color: #e9e6df; }

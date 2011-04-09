@@ -1,0 +1,33 @@
+<table class="form_demo">
+  <thead class="ui-widget-header">
+    <tr>
+      <th> User Name</th>
+      <th> Channel </th>
+      <th> Number Videos </th>
+      <th> Last Retrieved</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody class="ui-widget-content">
+
+    <% @feeds.each do |feed| %>
+      <tr>
+        <td><%= link_to feed.name, feed %></td>
+        <td>
+          <%= link_to feed.default_channel.name, feed %>/
+          <%= link_to feed.default_channel.language, feed %>
+        </td>
+        <td><%= content_tag(:span, feed.videos.count, :class => "feed_counter") %></td>
+        <td><%= link_to feed.updated_at.strftime("%d %b, %Y"), feed %></td>
+        <td><%= button_to 'Latest', latest_feed_path(feed), :remote => true, :method => :get %></td>
+        <td><%= button_to 'Edit', edit_feed_path(feed), :method => :get %></td>
+        <td><%= button_to 'Destroy', feed, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+<%= button_to 'New Feed', new_feed_path, :method => :get %>

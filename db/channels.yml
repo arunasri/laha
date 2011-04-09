@@ -1,0 +1,22 @@
+# false means do NOT auto approve
+---
+telugu:
+  trailers:
+    name: Trailers
+    show_association_name: trailers
+    feeds:
+     RajshriTelugu: true
+  movies:
+    name: Movies
+    show_association_name: movies
+    feeds: 
+     khalidhussainchannel: true
+     ETVtelugu: true
+     teluguone: true
+     NavvulaTV: true
+     OldSongsTelugu: true
+     Zustcinema: true
+     ragalaharitv: true
+     caabn12: true
+     gulteabn: true
+     TeluguHub: true

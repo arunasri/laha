@@ -1,0 +1,29 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+  <title>hamara Box </title> 
+
+    <%= stylesheet_link_tag 'jquery.mobile' %>
+
+    <%= javascript_include_tag 'vendor/jquery','vendor/swfobject', 'vendor/jwplayer', 'vendor/jquery.mobile',"mobile" %>
+
+                              
+  </head> 
+  <body> 
+    <div data-role="page">
+
+    <div data-role="header">
+      <%= content_for :title %>
+    </div><!-- /header -->
+    <div data-role="content">
+        <%= yield %>
+    </div><!-- /content -->
+
+    <div data-role="footer" data-position="inline">
+      <%= content_for :menu %>
+    </div><!-- /footer -->
+
+    </div><!-- /page -->
+  </body>
+</html>
+

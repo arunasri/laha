@@ -1,0 +1,92 @@
+a.create_new_project {
+  text-decoration: underline; }
+
+a:hover.create_new_project {
+  text-decoration: underline;
+  background: #000;
+  color: #fff;
+  padding: 2px;
+  text-decoration: none; }
+
+header {
+  position: relative; }
+
+header nav {
+  position: absolute;
+  right: 0; }
+
+header nav a {
+  display: inline-block;
+  color: #ccc;
+  color: #fff;
+  padding: .4em .8em;
+  text-decoration: none;
+  font-family: 'Arial'; }
+
+header nav a:hover {
+  color: #fff;
+  text-decoration: none; }
+
+header nav a.active {
+  color: #fff;
+  background: #575757;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px; }
+
+header nav {
+  top: 0px; }
+
+.logo {
+  margin-left: 20px; }
+
+.logo a {
+  position: relative;
+  display: block;
+  left: -20px;
+  color: #fff;
+  padding-top: 5px;
+  font-family: 'Yanone Kaffeesatz';
+  font-family: 'Merriweather';
+  text-decoration: none; }
+
+.logo a:hover {
+  color: #e9e6df;
+  text-decoration: none; }
+
+.logo a {
+  height: 20px;
+  font-size: 12px; }
+
+.wrap {
+  width: 75%;
+  float: left;
+  margin-left: 30px;
+  color: #464646; }
+
+section.top {
+  margin-bottom: 0px;
+  background: #1d1d1d;
+  border-bottom: 1px solid #535353; }
+
+#current_project_name {
+  padding-top: 5px;
+  font-size: 30px; }
+  #current_project_name a {
+    color: #fff;
+    text-decoration: none; }
+  #current_project_name a:hover {
+    color: #e9e6df; }
+
+.blank {
+  margin-top: 10px;
+  font-style: italic;
+  color: #606060;
+  color: #000;
+  color: #555;
+  font-size: 17px;
+  font-family: 'Helvetica'; }
+
+.top2 {
+  background: #3c3c3c;
+  height: 80px; }

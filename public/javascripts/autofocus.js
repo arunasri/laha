@@ -1,0 +1,4 @@
+$(function(){
+  $('[autofocus="autofocus"]').autofocus();
+});
+

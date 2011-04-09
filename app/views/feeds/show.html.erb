@@ -1,0 +1,6 @@
+<p id="notice"><%= notice %></p>
+
+<%= render :partial => "/videos/table", :locals => { :search => @search, :videos => @videos }%>
+
+<%= link_to 'Edit', edit_feed_path(@feed) %> |
+<%= link_to 'Back', feeds_path %>

@@ -1,0 +1,37 @@
+<style>
+  .lang_name {
+    font-size: 32px;
+  }
+  .channel_name {
+    font-size: 25px;
+    margin: 0;
+    padding: 2px;
+    font-weight: bold;
+  }
+</style>
+
+<h1 style='margin-top:40px;margin-bottom:40px;font-size:25px;text-decoration:underline;'> Select a channel </h1>
+
+<div>
+
+  <div style='float:left;'>
+    <h2 class='lang_name'> Hindi</h2>
+    <% Channel.hi.each do | channel | %>
+      <p class='channel_name'>
+        <%= link_to channel.name, channel_path(:language => channel.language,:id => channel.name) %>
+      </p>
+    <% end %>
+  </div>
+
+  <div style='float:left;margin-left:150px;'>
+    <h2 class='lang_name'> Telugu</h2>
+    <% Channel.te.each do | channel | %>
+      <p class='channel_name'>
+        <%= link_to channel.name, channel_path(:language => channel.language,:id => channel.name) %>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="clear"></div>
+
+</div>

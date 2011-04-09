@@ -1,0 +1,11 @@
+#content .d_title {
+  text-align: left; }
+
+form.d_form label {
+  color: #b0b0b0;
+  font-family: arial, serif;
+  letter-spacing: 1px; }
+form.d_form .d_text_field {
+  margin-top: 4px;
+  width: 320px;
+  font-size: 16px; }

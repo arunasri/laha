@@ -1,0 +1,32 @@
+<style>
+  .pagination { padding: 3px; margin: 3px; text-align: center;}
+  .pagination a { padding: 2px 5px 2px 5px; margin: 2px; border: 1px solid #aaaadd; text-decoration: none; color: #000099; }
+  .pagination a:hover,
+  .pagination a:active { border: 1px solid #000099; color: #000; }
+  .pagination span.current { padding: 2px 5px 2px 5px; margin: 2px; border: 1px solid #000099; font-weight: bold; background-color: #000099; color: #FFF; }
+  .pagination span.disabled { padding: 2px 5px 2px 5px; margin: 2px; border: 1px solid #eee; color: #ddd; }
+</style>
+
+<div>
+  <div class='video_playing' style='float:left;width:500px;border:1px solid blue;'>
+    <%= render_iframe_box(Video.first, :height => 400, :width => 450) %>
+  </div>
+
+  <div class='videos_list' style='float:right;width:450px;border:1px solid green; height:500px;overflow:scroll;'>
+      <p>
+          play all
+          &nbsp;
+          &nbsp;
+          &nbsp;
+          customize Stations
+      </p>
+      <% @videos.each do |video| %>
+        <div style='float:left; margin-left:8px;width:180px;border:1px solid red;'>
+          <%= render_iframe_box(video, :height => 150, :width => 175) %>
+        </div>
+      <% end %>
+      <%= will_paginate @videos %>
+  </div>
+  <div class='clear'></div>
+
+</div>

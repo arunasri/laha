@@ -1,0 +1,112 @@
+<style>
+  .ui-icon
+  {
+    display: inline-block !important;
+  }
+</style>
+
+<div class="admin-video">
+  <%= render_iframe_box(@video,:width=> 450,:height => 350) %> 
+</div>
+
+<%= form_for(@video, :class => "edit-video") do |f| %>
+  <% if @video.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@video.errors.count, "error") %> 
+        prohibited this feed from being saved:
+      </h2>
+      <ul>
+        <% @video.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <table class="form_demo">
+    <tbody>
+      <tr>
+        <th><%= f.label :name %></th>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :show_name, 'Movie' %></th>
+        <td><%= f.text_field :show_name %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :description %></th>
+        <td><%= f.text_area :description, :rows => 8 %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :approved %></th>
+        <td>
+          <div class="groups">
+            <%= f.radio_button :approved, true %>
+            <%= label_tag 'video_approved_true', "Yes" %>
+            <%= f.radio_button :approved, false %>
+            <%= label_tag 'video_approved_false', "No" %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :language %></th>
+        <td>
+          <div class="groups">
+            <%= f.radio_button :language, 'telugu' %>
+            <%= label_tag 'video_language_telugu', "Telugu" %>
+            <%= f.radio_button :language, 'hindi' %>
+            <%= label_tag 'video_language_hindi', "Hindi" %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :kind, "Type" %></th>
+        <td>
+          <div class="groups">
+            <%= f.radio_button :kind, 'movie' %>
+            <%= label_tag 'video_kind_movie', "Movie" %>
+            <%= f.radio_button :kind, 'song' %>
+            <%= label_tag 'video_kind_song', "Song" %>
+            <%= f.radio_button :kind, 'lyric' %>
+            <%= label_tag 'video_kind_lyric', "Lyric" %>
+            <%= f.radio_button :kind, 'trailer' %>
+            <%= label_tag 'video_kind_trailer', "Trailer" %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :quality %></th>
+        <td>
+          <div class="groups">
+            <%= f.radio_button :quality, "hd" %>
+            <%= label_tag 'video_quality_hd', "HD" %>
+            <%= f.radio_button :quality, "high" %>
+            <%= label_tag 'video_quality_high', "High" %>
+            <%= f.radio_button :quality, "medium" %>
+            <%= label_tag 'video_quality_medium', "Medium" %>
+            <%= f.radio_button :quality, "low" %>
+            <%= label_tag 'video_quality_low', "Low" %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :racy %></th>
+        <td>
+          <div class="groups">
+            <%= f.radio_button :racy, true %>
+            <%= label_tag 'video_racy_true', "Yes" %>
+            <%= f.radio_button :racy, false %>
+            <%= label_tag 'video_racy_false', "No" %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th>
+        </th>
+        <td><%= f.submit %></td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>
+
+<%= button_to 'All Videos', videos_path, :method => :get %>

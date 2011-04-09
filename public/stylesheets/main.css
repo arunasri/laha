@@ -1,0 +1,373 @@
+html {
+    background: none repeat scroll 0 0 #EEEFF4;
+    color: #000000;
+    font-size: 12px;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+fieldset, img {
+    border: 0 none;
+}
+address, caption, cite, code, dfn, em, strong, th, var, optgroup {
+    font-style: inherit;
+    font-weight: inherit;
+}
+li {
+    list-style: none outside none;
+}
+caption, th {
+    text-align: left;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: 400;
+}
+q:before, q:after {
+    content: "";
+}
+abbr, acronym {
+    border: 0 none;
+    font-variant: normal;
+}
+legend {
+    color: #000000;
+}
+input, button, textarea, select, optgroup, option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+}
+input, button, textarea, select {
+    font-size: 100%;
+}
+body {
+    border: 0 none;
+    font-family: Arial;
+}
+#wrapper {
+    margin: 30px auto;
+    width: 1000px;
+}
+a:link, a:visited {
+    color: #3B5998;
+    text-decoration: none;
+}
+a:hover, a:active, .underline:link, .underline:visited {
+    text-decoration: underline;
+}
+#logo {
+    float: left;
+    margin: 0 15px 0 0;
+}
+#logo a {
+    background: url("/images/logo3.png") no-repeat scroll left top transparent;
+    display: block;
+    height: 32px;
+    width: 154px;
+}
+#logo span {
+    display: none;
+}
+#header {
+    margin: 0 0 20px;
+}
+#searchBox {
+    border: 2px solid #999999;
+    border-radius: 5px 5px 5px 5px;
+    font-size: 20px;
+    height: 30px;
+    margin-right: 15px;
+    outline: medium none;
+    padding: 0 5px 0 4px;
+    width: 340px;
+}
+
+#searchBox:focus {
+    border: 2px solid #000000;
+}
+
+#searchTermKeyword {
+    font-family: 'Reenie Beanie',arial,serif;
+    font-size: 30px;
+}
+.statusLoading {
+    background: url("/images/loading.gif") no-repeat scroll 325px 50% #FFFFFF;
+}
+.statusPlaying {
+    background: url("/images/playing.gif") no-repeat scroll 325px 50% #FFFFFF;
+}
+#shareTools span {
+    color: #333333;
+    font-size: 13px;
+    font-weight: 700;
+    margin: 0 2px;
+}
+#linkUrl, #embedUrl {
+    border: 1px solid #999999;
+    border-radius: 3px 3px 3px 3px;
+    color: #666666;
+    font-size: 14px;
+    height: 18px;
+    margin-right: 15px;
+    outline: medium none;
+    padding: 1px;
+    width: 280px;
+}
+#shareButtons {
+    float: left;
+    margin: 2px 15px 0 0;
+}
+#main {
+    margin: 20px 0 0;
+}
+#hidden {
+    display: none;
+    height: 0;
+}
+#videoDiv {
+    float: left;
+    margin: 0 10px 0 0;
+}
+#videoTools {
+    margin: 10px 0 0;
+    padding: 10px;
+    width: 695px;
+}
+.boxText {
+    font-weight: 700;
+    margin-right: 10px;
+}
+#playlistWrapper {
+    float: left;
+    overflow: hidden;
+    position: relative;
+    vertical-align: top;
+    width: 260px;
+}
+#playlist img {
+    clear: both;
+    float: left;
+    height: 90px;
+    margin: 0 5px 12px 0;
+    vertical-align: top;
+    width: 120px;
+}
+#playlist div {
+    float: left;
+    font-size: 12px;
+    height: 40px;
+    margin: 6px 0 0;
+    width: 125px;
+}
+#playlist a {
+    display: block;
+    width: 260px;
+}
+#buttonControl {
+    left: 44px;
+    position: absolute;
+    top: 32px;
+    z-index: 1000;
+}
+.play0 #buttonControl {
+    top: 32px;
+}
+.play1 #buttonControl {
+    top: 136px;
+}
+.play2 #buttonControl {
+    top: 237px;
+}
+.play3 #buttonControl {
+    top: 338px;
+}
+.play4 #buttonControl {
+    top: 439px;
+}
+#buttonControl a {
+    display: block;
+    height: 32px;
+    width: 32px;
+}
+.playButton #buttonControl{
+    background: url("/images/player_play-1.png") no-repeat scroll left top transparent;
+}
+
+.pauseButton #buttonControl{
+    background: url("/images/player_pause-1.png") no-repeat scroll left top transparent;
+}
+.footerBox, .mainBox {
+    border: 1px solid #AAAAAA;
+    border-radius: 10px 10px 10px 10px;
+    vertical-align: top;
+}
+#footer {
+    font-size: 12px;
+    margin: 20px 0 0;
+}
+#tipDiv {
+    margin: 10px 10px 0 0;
+    padding: 10px;
+    width: 322px;
+}
+#socialButtons {
+    margin: 10px;
+    padding: 10px;
+    width: 330px;
+}
+#credit {
+    margin: 10px 0 0 10px;
+    padding: 10px;
+    width: 230px;
+}
+#credit p, #credit ul, #tip {
+    font-size: 12px;
+    line-height: 1.8em;
+    margin-left: 3px;
+}
+#additionalCredits {
+    display: none;
+    margin-left: 10px;
+}
+#additionalCredits li {
+    line-height: 1.3em;
+    margin-left: 15px;
+}
+.boxHeader {
+    font-family: 'Josefin Sans Std Light',arial,serif;
+    font-size: 30px;
+    margin: 0 0 7px;
+}
+#share2 {
+    width: 115px;
+}
+#buzzButton {
+    margin: 9px 0 0;
+}
+#stumbleButton {
+    margin: 10px 0;
+}
+#deliciousButton {
+    float: left;
+    margin: 10px 0;
+}
+#addthisButton {
+    color: #0B4994;
+    margin: 15px 0 10px -2px;
+}
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+.clearfix {
+    display: inline-block;
+}
+html[xmlns] .clearfix {
+    display: block;
+}
+* html .clearfix {
+    height: 1%;
+}
+del, ins, .underline:hover, .underline:active {
+    text-decoration: none;
+}
+sup, sub {
+    vertical-align: baseline;
+}
+strong, .selectedThumb {
+    font-weight: 700;
+}
+#searchDiv, #shareTools, #socialButtons, #tipDiv, #credit, #share1, #share2, #share3 {
+    float: left;
+}
+#share1, #share3 {
+    width: 100px;
+}
+#likeButton, #tweetButton {
+    margin: 8px 0 0;
+}
+
+
+.searched {
+    background-color: #E0EAF1;
+    border-bottom: 1px solid #3E6D8E;
+    border-right: 1px solid #7F9FB6;
+    color: #3E6D8E;
+    font-size: 90%;
+    line-height: 2.4;
+    margin: 2px 2px 2px 0;
+    padding: 3px 4px;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+#search-filters small {
+    background: none repeat scroll 0 0 #DDDDDD;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    clear: right;
+    color: #000000;
+    display: block;
+    float: left;
+    font-size: 9px;
+    margin: -1px 11px 5px -6px;
+    max-width: 596px;
+    overflow: hidden;
+    padding: 1px 6px;
+    position: relative;
+    white-space: nowrap;
+}
+
+#search-filters small a.cancel {
+    background: url("../images/transactions/btn_filter_clear.png") no-repeat scroll 0 0 transparent;
+    display: inline;
+    height: 11px;
+    margin-left: 5px;
+    opacity: 0.8;
+    padding: 0 0 0 11px;
+}
+
+#search-filters small#search-clear {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #B1BDD6;
+    color: #9F9F9F;
+}
+#search-filters {
+    border-bottom: 1px dotted #EEEEEE;
+    clear: both;
+    display: block;
+    line-height: 15px;
+    margin-bottom: 0;
+    padding: 10px 10px 5px;
+}
+
+#search-filters small#search-clear a.cancel {
+    margin: 0;
+    padding: 0 14px 0 0;
+}
+#search-filters small a.cancel {
+    display: inline;
+    height: 11px;
+    margin-left: 5px;
+    opacity: 0.8;
+    padding: 0 0 0 11px;
+}
+a {
+    color: #005A8C;
+    cursor: pointer;
+    text-decoration: none;
+}
+

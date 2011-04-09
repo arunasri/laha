@@ -1,0 +1,33 @@
+.video_title {
+  padding-top: 5px;
+  color: #bfbfbf;
+  color: #afafaf;
+  color: #9f9f9f; }
+  .video_title a {
+    color: #9f9f9f;
+    text-decoration: none; }
+
+.video_date {
+  color: #dfdfdf; }
+
+.video {
+  overflow: hidden;
+  float: left;
+  margin-left: 0px;
+  margin-top: 20px;
+  -moz-border-radius: 8px 8px 8px 8px;
+  -webkit-border-radius: 8px 8px 8px 8px;
+  background: #DBDBDB;
+  background: #efefef;
+  background: #dfdfdf;
+  background: #fff;
+  border: 1px solid #efefef;
+  border: 1px solid #cfcfcf;
+  float: left;
+  margin: 10px;
+  padding: 10px; }
+  .video img {
+    padding: 1px;
+    border: 3px solid #FFF; }
+  .video a:hover img {
+    border: 3px solid #50AD2D; }

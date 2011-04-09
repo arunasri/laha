@@ -1,0 +1,38 @@
+#channels_bar {
+  background: #50AD2D;
+  background: #3c3c3c;
+  background: #EFEFEF;
+  padding: 2px 0 3px 5px;
+  white-space: nowrap;
+  .list {
+    margin: 0px;
+    padding: 3px 0 5px 0;
+    list-style-type: none;
+    li {
+      padding: 0px 20px 0 20px;
+      display: inline;
+      a {
+        font-size: 1.1em;
+        padding-top:15px;
+        margin-top:5px;
+        color: #fff;
+        color: #000;
+        color: #1d1d1d;
+        font-weight: bold;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: none;
+        border-bottom: 3px solid #2B332E;
+      }
+    }
+    li.current {
+      a {
+        border-bottom: 3px solid #2B332E;
+        border-bottom: 3px solid #1d1d1d;
+      }
+    }
+
+  }
+}
+

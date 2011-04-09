@@ -1,0 +1,13 @@
+<% content_for :title do %>
+  <h1><%= @video.title %></h1>
+<% end %>
+
+
+<div class='video'>
+  <div class='video_embed'>
+    <%= div_for(@video, :width => 280, :height => 231, :class => 'videobox small', :link => @video.youtube_id) do %>
+  <% end %>
+  </div>
+  <h2> <%= @video.title %> </h2>
+  <h3> <%= @video.description %> </h3>
+</div>

@@ -1,0 +1,22 @@
+<% content_for :title do %>
+  <h1>hamaraBox</h1>
+<% end %>
+<ul data-role="listview" data-filter="true" data-theme="c" data-dividertheme="a">
+
+  <li data-role="list-divider">Hindi</li> 
+  <% Channel.hi.all.each do | channel | %>
+  <li>
+    <h1>
+      <%= link_to channel.name, channel_path(:language => channel.language,:id => channel.name) %>
+    </h1>
+  </li>
+  <% end %>
+  <li data-role="list-divider">Telugu</li> 
+  <% Channel.te.all.each do | channel | %>
+  <li>
+    <h1>
+      <%= link_to channel.name, channel_path(:language => channel.language,:id => channel.name) %>
+    </h1>
+  </li>
+  <% end %>
+</ul>

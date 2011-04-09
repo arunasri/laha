@@ -1,0 +1,37 @@
+<%= form_for(@show) do |f| %>
+  <% if @show.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@show.errors.count, "error") %> prohibited this feed from being saved:</h2>
+
+      <ul>
+        <% @show.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <table class="form_demo">
+    <tbody>
+      <tr>
+        <th><%= f.label :name %></th>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :language %></th>
+        <td>
+          <%= f.radio_button :language, "telugu" %>
+          <%= label_tag 'language_teugu', "Telugu" %>
+          <%= f.radio_button :language, "hindi" %>
+          <%= label_tag 'language_hindi', "Hindi" %>
+        </td>
+      </tr>
+      <tr>
+        <th>
+        </th>
+        <td>
+          <%= f.submit %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>

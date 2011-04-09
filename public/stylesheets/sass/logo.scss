@@ -1,0 +1,37 @@
+.logo_umbrella {
+  background: none repeat scroll 0 0 #2B332E;
+  background: none repeat scroll 0 0 #1d1d1d;
+  border-bottom: 1px solid #131F18;
+  margin-bottom: 0px;
+}
+
+.logo {
+  margin-left: 44px;
+}
+.logo a {
+	position:relative;
+	display:block;
+	height:42px;
+	left:-20px;
+  color: #50AD2D;
+  color: #fff;
+  font-size: 28px;
+  padding-top: 5px;
+  font-family:  'Merriweather';
+  text-decoration: none;
+  span {
+    margin: 0;
+    padding: 0;
+  }
+  span.word2 {
+    margin-left: -5px;
+  }
+  span.word3 {
+    margin-left: -5px;
+  }
+}
+
+.logo a:hover {
+  color: #e9e6df;
+  text-decoration: none;
+}

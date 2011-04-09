@@ -1,0 +1,40 @@
+telugu_movies:
+ name: Movies
+ language: telugu
+ show_association_name: movies
+ id: 1
+telugu_video_songs:
+ name: Video Songs
+ language: telugu
+ show_association_name: songs
+ id: 2
+telugu_trailers:
+ name: Trailers
+ language: telugu
+ show_association_name: trailers
+ id: 3
+telugu_lyrics:
+ name: Trailers
+ language: telugu
+ show_association_name: lyrics
+ id: 4
+hindi_movies:
+ name: Movies
+ language: hindi
+ show_association_name: movies
+ id: 5
+hindi_video_songs:
+ name: Video Songs
+ language: hindi
+ show_association_name: songs
+ id: 6
+hindi_trailers:
+ name: Trailers
+ language: hindi
+ show_association_name: trailers
+ id: 7
+hindi_lyrics:
+ name: Trailers
+ language: hindi
+ show_association_name: lyrics
+ id: 8

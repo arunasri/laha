@@ -1,0 +1,29 @@
+#error_explanation {
+  background-color: #F0F0F0;
+  border: 2px solid red;
+  margin-bottom: 20px;
+  padding: 7px 7px 0px;
+  width: 410px;
+
+  h2 {
+    background: url("/images/circular_icons/no.png") no-repeat scroll 4px 6px #C40700;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: bold;
+    margin: -7px -7px 10px;
+    padding: 8px 5px 8px 30px;
+    text-align: left;
+    letter-spacing: 1px;
+  }
+
+  ul {
+    list-style: none outside none;
+    margin: 0 1em 1em 2em;
+  }
+}
+
+form#new_user ul li {
+  font-size: 15px;
+  margin: 4px 0;
+  padding: 4px 0;
+}

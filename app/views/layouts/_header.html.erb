@@ -1,0 +1,21 @@
+<section class="logo_umbrella">
+    <div class="logo">
+      <a href="/">
+        <span class='word1'>hamara</span>
+        <span class='word2'>Box</span>
+      </a>
+    </div>
+</section>
+
+
+<% if params[:id].present? %>
+<div id="channels_bar">
+  <ul class="list">
+    <% Channel.send(language || 'hindi').all.each do | c | %>
+      <li class=<%= 'current' if c.name.downcase == params[:id].downcase %>>
+        <%= link_to c.name, channel_path(:language => c.language, :id => c.name) %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<% end %>

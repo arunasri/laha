@@ -1,0 +1,35 @@
+<style>
+  #channels_bar {display: none;}
+  div.OverviewVideoWrapper {
+    clear: both;
+    min-width: 920px;
+    text-align: center;
+  }
+
+  div.VideoPlayer {
+    -moz-box-shadow: 0 0 15px #000000;
+    background: none repeat scroll 0 0 #111111;
+    border-bottom: 1px solid #000000;
+    margin: 0 auto 30px;
+    padding: 0 !important;
+    width: 720px;
+    height: 406px !important;
+  }
+
+  div.OverviewVideoWrapper h4{
+    width: 720px;
+    text-align: left;
+    margin-left: 150px;
+  }
+</style>
+<br />
+
+<div class='OverviewVideoWrapper'>
+  <h3> <%= @video.name %> </h3>
+  <div class="VideoPlayer">
+    <%= div_for(@video, :class => 'large-video', :width => 720, :height => 406, :link => @video.youtube_id) do %>
+    <% end %>
+  </div>
+  <%= link_to "next>>", "#", :id => "next" %>
+  <h4> <%= auto_link(@video.description) %> </h4>
+</div>

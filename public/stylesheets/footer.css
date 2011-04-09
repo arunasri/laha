@@ -1,0 +1,33 @@
+footer {
+  position: relative;
+  margin-bottom: 3em;
+  font-size: .95em; }
+
+footer .col {
+  float: left;
+  padding-right: 78px;
+  width: 130px; }
+
+footer .col:last-of-type {
+  padding-right: 0; }
+
+footer h4 {
+  font-size: 1em;
+  padding-bottom: .5em;
+  border-bottom: 1px solid #C6C5C2; }
+
+footer a {
+  display: block;
+  font-size: .9em;
+  line-height: 1.6em;
+  color: #636363; }
+
+footer a.hello {
+  margin-bottom: 1.2em; }
+
+footer .copy {
+  position: absolute;
+  right: 0;
+  bottom: -1em;
+  margin: 0;
+  font-size: .9em; }

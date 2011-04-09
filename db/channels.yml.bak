@@ -1,0 +1,85 @@
+# false means do NOT auto approve
+---
+hindi:
+  cooking:
+    ShowMeTheCurry: true
+    Manjulaskitchen: true
+    vahchef: true
+  fashion:
+    missmalinivideos: false
+    IndianFashionShow: false
+    TheFDCI: false
+  bollywood:
+    Bollywoodgupshup: false
+    KoffeeKaranTv: false
+    lehrentv: true
+    MumbaiBollywood: false
+    desimad: true
+    zoomdekho: true
+    bollywoodhot1: true
+    bollywoodpk: true
+  travel:
+    india: true
+    WonderWomanTV: false
+    IndiaTourismhelpline: true
+  news:
+    indiatv: true
+    ndtv: true
+    starnews: true
+  television:
+    zeetv: true
+  sanskar:
+    VHPSampark: true
+    avnvivek: true
+    gurumaaashram: true
+  business:
+    cnbctv18: true
+    ndtvprofit: true
+  ads:
+    coderedreel: true
+  mixup:
+    xxxxxxx: true
+telugu:
+  cooking:
+    andhrarecipes: true
+    gayatrivantillu: true
+    recipevideostelugu: true
+    telugucookingvideos: true
+    telugurecipe: true
+    telugurecipes: true
+    telugurecipevideos: true
+    vahchef: true
+  trailers:
+    RajshriTelugu: true
+  tollywood:
+    khalidhussainchannel: true
+    ETVtelugu: true
+    teluguone: true
+    NavvulaTV: true
+    OldSongsTelugu: true
+    Zustcinema: true
+    ragalaharitv: true
+    caabn12: true
+    gulteabn: true
+    TeluguHub: true
+  news:
+    Snehatv9news: true
+    cahmtv: true
+    tv9telugu: true
+    telugudesampartytv: true
+    gulte1221: true
+    cainws: true
+    telugutouchmail: true
+    teluguhub009: true
+    TheT1TV5News: true
+  tv:
+    zeebatukujatakabandi: true
+    zeetvtelugu: true
+    gultejayapradam1: true
+    maatv: true
+    maareality: true
+  kids:
+    kidsone: true
+    maajuniors: true
+    sweatbabe: true
+    poornakumbham: true

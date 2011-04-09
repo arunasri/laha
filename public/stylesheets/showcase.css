@@ -1,0 +1,14 @@
+.showcase {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center; }
+  .showcase img {
+    border: 2px solid #e2dfd8;
+    border: 2px solid #d5d4d2;
+    width: 800px;
+    background-color: #cccccc;
+    -moz-box-shadow: 3px 3px 3px #aaaaaa;
+    -webkit-box-shadow: 3px 3px 3px #aaaaaa;
+    box-shadow: 3px 3px 3px #aaaaaa;
+    padding: 15px 15px 15px 15px; }
