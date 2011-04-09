@@ -6,4 +6,3 @@ config/database.yml
 public/stylesheests/*.sa
 tmp
 tags
-Gemfile.lock
