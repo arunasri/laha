@@ -1,5 +1,7 @@
 gem 'handy', '>= 0.0.15'
-
+$:.unshift(File.expand_path('./lib', ENV['rvm_path'])) # Add RVM's lib directory to the load path.
+require "rvm/capistrano"
+set :rvm_ruby_string, 'ree@laha'
 set :stages, %w(staging production)
 require 'bundler/capistrano'
 require 'capistrano/ext/multistage'
