@@ -103,26 +103,8 @@ class Video < ActiveRecord::Base
 
   def self.containing_tag(query)
     ActsAsTaggableOn::Tag.find_by_sql(%Q{
-      SELECT distinct(tags.name) FROM tags LEFT OUTER JOIN taggings ON tags.id = taggings.tag_id INNER JOIN videos ON videos.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Video') AND (lower(tags.name) like '%#{query.downcase}%')
-    }).inject([]) do | all, tag |
-      if show = Show.find_by_name(tag.name)
-        if show.trailers.count > 0
-          all.push(:label =>  "trailer", :category => show.name)
-        end
-        if show.lyrics.count > 0
-          all.push(:label =>  "lyric", :category => show.name)
-        end
-        if show.songs.count > 0
-          all.push(:label =>  "song", :category => show.name)
-        end
-        if show.movies.count > 0
-          all.push(:label =>  "movie", :category => show.name)
-        end
-        all
-      else
-        all.push(:label => tag.name , :category => "")
-      end
-    end
+      SELECT distinct(tags.name),tags.id FROM tags LEFT OUTER JOIN taggings ON tags.id = taggings.tag_id INNER JOIN videos ON videos.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Video') AND (lower(tags.name) like '%#{query.downcase}%')
+    }).map { |x| { :id => x.id, :name => x.name } }
   end
 
   private

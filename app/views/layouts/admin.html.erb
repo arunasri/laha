@@ -2,24 +2,21 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <title><%= h(yield(:title) || "Untitled") %></title>
-    <%= stylesheet_link_tag "formalize/admin", "pagination","Aristo/jquery-ui-1.8.7.custom.css" %>
-    <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"%>
-    <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"%>
-    <%= javascript_include_tag  'vendor/rails','vendor/jquery.formalize.min', 'vendor/best_in_place', 'admin' %>
-      <%= yield(:head) %>
-                              
-    </head>
-    <body>
-      <div id="container">
-        <%- flash.each do |name, msg| -%>
-          <%= content_tag :div, msg, :id => "flash_#{name}" %>
-        <%- end -%>
-        <div id="wrapper" class="wat-cf">
-          <div id="main">
-            <%= yield %>
-          </div>
+    <title>Admin</title>
+    <%= include_stylesheets :admin %>
+    <%= include_javascripts :admin %>
+    <%= csrf_meta_tag %>
+  </head>
+  <body>
+    <div id="container">
+      <%- flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <%- end -%>
+      <div id="wrapper" class="wat-cf">
+        <div id="main">
+          <%= yield %>
         </div>
       </div>
-    </body>
-  </html>
+    </div>
+  </body>
+</html>

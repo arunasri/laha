@@ -4,9 +4,11 @@ class PlayersController < ApplicationController
   skip_before_filter :ensure_admin_logged_in
 
   def play
-    @playing = (params[:term] || 'telugu').split(",").reject(&:blank?)
-    @videos     = Video.approved
-    @videos     = @videos.tagged_with(@playing) unless @playing.blank?
+    @playing  = (params[:term] || '').split(",").reject(&:blank?)
+    @playing  = ActsAsTaggableOn::Tag.find(@playing).map(&:name)
+
+    @videos   = Video.approved
+    @videos   = @videos.tagged_with(@playing) unless @playing.blank?
 
     respond_to do |format|
       format.html # new.html.erb

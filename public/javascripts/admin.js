@@ -1,22 +1,12 @@
 $(function() {
-
-	$('.datepicker').datepicker().show();
-
 	$("#video_show_name").autocomplete({
 		source: "/shows/query",
 		minLength: 2
 	});
 
-	$("#accordion").accordion({
-		autoheight: true,
-		event: "mouseover"
-	});
-
-	$("#tabs").tabs();
-
-	$(".groups").buttonset();
-
-	$(".best_in_place").best_in_place()
+	$(".delete_video").bind("ajax:success", function() {
+      $(this).parents('tr').remove();
+    });
 
 	$("form.button_to").bind("ajax:beforeSend", function() {
 		$(this).parents("tr").find(".feed_counter").replaceWith($("<img/>", {

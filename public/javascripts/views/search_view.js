@@ -1,13 +1,21 @@
 App.Views.SearchView = Backbone.View.extend({
-	events: {
-		"catcompleteselect": "selected"
-	},
 	initialize: function() {
 		this.collection = new App.Collections.TagsList();
-		this.el.catcomplete({
-			source: "/tags/search",
-			minLength: 2
+		this.el.tokenInput("/tags/search", {
+			queryParam: 'term',
+			onAdd: $.proxy(this.addTerm, this),
+			onDelete: $.proxy(this.deleteTerm, this)
 		});
+	},
+	addTerm: function(input) {
+		this.collection.add(input);
+	},
+	deleteTerm: function(input) {
+		var t = this.collection.find(function(term) {
+			return term.id == input.id
+		})
+
+		this.collection.remove(t);
 	},
 	reload: function() {
 		var self = this;
@@ -22,12 +30,6 @@ App.Views.SearchView = Backbone.View.extend({
 			});
 			$(this.el).val('');
 		}
-	},
-	selected: function(evt, ui) {
-		this.collection.addIfNotFound(ui.item.label);
-		this.collection.addIfNotFound(ui.item.category);
-		$(this.el).val('');
-		return false;
 	}
 });
 

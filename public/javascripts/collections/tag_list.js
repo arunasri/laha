@@ -31,10 +31,10 @@ App.Collections.TagsList = Backbone.Collection.extend({
 		}
 	},
 	present: function(tagName) {
-		return this.pluck('label').indexOf(tagName) !== - 1;
+		return this.pluck('id').indexOf(tagName) !== - 1;
 	},
 	toSearchParam: function() {
-		return this.pluck('label').join(",");
+		return this.pluck('id').join(",");
 	}
 });
 

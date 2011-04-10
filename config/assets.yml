@@ -7,15 +7,27 @@ javascripts:
     - public/javascripts/vendor/json2.js
     - public/javascripts/vendor/underscore-min.js
     - public/javascripts/vendor/backbone-min.js
-    - public/javascripts/vendor/jquery-ui-1.8.10.custom.min.js
+    - public/javascripts/vendor/jquery.tokeninput.js
     - public/javascripts/application.js
     - public/javascripts/views/*.js
     - public/javascripts/models/*.js
     - public/javascripts/controllers/*.js
     - public/javascripts/collections/*.js
     - app/views/**/*.jst
+  admin:
+    - public/javascripts/vendor/jquery.js
+    - public/javascripts/vendor/jquery-ui-1.8.10.custom.min.js
+    - public/javascripts/vendor/jquery.formalize.min.js
+    - public/javascripts/vendor/jquery.autocomplete.js
+    - public/javascripts/vendor/swfobject.js
+    - public/javascripts/vendor/json2.js
+    - public/javascripts/vendor/rails.js
+    - public/javascripts/admin.js
 stylesheets:
   application:
     - public/stylesheets/main.css
-    - public/stylesheets/base/jquery.ui.all.css
+    - public/stylesheets/vendor/token-input/*.css
+  admin:
+    - public/stylesheets/main.css
+    - public/stylesheets/vendor/formalize/*.css
     - public/stylesheets/Aristo/jquery-ui-1.8.7.custom.css

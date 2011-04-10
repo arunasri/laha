@@ -2,13 +2,6 @@ class ApplicationController < ActionController::Base
 
   has_mobile_fu
 
-  helper_method :telugu?
-  helper_method :hindi?
-  helper_method :language
-  helper_method :channel
-  helper_method :language?
-  helper_method :channel?
-
   protect_from_forgery
 
   #before_filter :ensure_logged_in
@@ -33,44 +26,10 @@ class ApplicationController < ActionController::Base
     session[:videos_path] = request.path
   end
 
-  protected
-
-  def telugu?
-    language.try(:==, 'te')
-  end
-
-  def hindi?
-    language.try(:==, 'hi')
-  end
-
-  def language?
-    language.present?
-  end
-
-  def channel?
-    channel.present?
-  end
-
-  def language
-    cookies[:language]
-  end
-
-  def channel
-    cookies[:channel]
-  end
-
-  def language=(lng)
-    cookies.permanent[:language]  = lng
-  end
-
-  def channel=(lng)
-    cookies.permanent[:channel]  = lng
-  end
-
-
   private
 
   def ensure_logged_in
+    return true if Rails.env.development?
     unless current_user
       render :text => 'please login first'
     end
@@ -78,6 +37,7 @@ class ApplicationController < ActionController::Base
 
   # keep it in application controller since more than one controllers use it
   def ensure_admin_logged_in
+    return true if Rails.env.development?
     unless current_user.try(:admin)
       render :text => 'not authorized'
     end

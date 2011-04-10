@@ -1,17 +1,3 @@
-$.widget("custom.catcomplete", $.ui.autocomplete, {
-	_renderMenu: function(ul, items) {
-		var self = this,
-		currentCategory = "";
-		$.each(items, function(index, item) {
-			if (item.category != currentCategory) {
-				ul.append("<li class='category'>" + item.category + "</li>");
-				currentCategory = item.category;
-			}
-			self._renderItem(ul, item);
-		});
-	},
-});
-
 function onYouTubePlayerReady(playerId) {
 	var ytplayer = document.getElementById("playing");
 	window.PlayerView = new App.Views.PlayerView({
@@ -25,6 +11,7 @@ function onYouTubePlayerReady(playerId) {
 function onPlayerChange(newstate) {
 	window.PlayerView.changeState(newstate);
 }
+
 var App = {
 	Views: {},
 	Models: {},
@@ -45,4 +32,3 @@ jQuery(function($) {
 		id: "playing"
 	});
 });
-
