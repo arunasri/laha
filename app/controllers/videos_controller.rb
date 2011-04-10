@@ -32,6 +32,9 @@ class VideosController < ApplicationController
 
   def edit
     @video = Video.find(params[:id])
+    respond_to do |format|
+      format.html # new.html.erb
+    end
   end
 
   def create

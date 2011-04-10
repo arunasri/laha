@@ -12,69 +12,68 @@
     <%= include_stylesheets :application %>
     <%= include_javascripts :application %>
     <%= csrf_meta_tag %>
-    </head>
-    <body>
-      <style>
-.ui-autocomplete {
-    background: none repeat scroll 0 0 white;
-    border: 1px solid #949494;
-    color: #888888;
-    font-size: 11px;
-    overflow: hidden;
-    text-align: left;
-    z-index: 97;
-}
-.ui-autocomplete ul {
-    background: none repeat scroll 0 0 white;
-    margin: 0;
-}
-.ui-autocomplete li {
-    background-color: #FFFFFF;
-    cursor: pointer;
-    line-height: 11px;
-    padding-bottom: 5px;
-    padding-left: 5px;
-    padding-top: 5px;
-}
-.ui-autocomplete li.indent_item {
-    padding-left: 15px;
-}
-.ui-autocomplete li.selected {
-    background-color: #BBBBBB;
-    color: #FFFFFF;
-}
-.ui-autocomplete li.selected span.episode_count {
-    color: #FFFFFF;
-}
-.ui-autocomplete li span.suggest-matched-text {
-    color: #222222;
-}
+  </head>
+  <body>
+    <style>
+      .ui-autocomplete {
+        background: none repeat scroll 0 0 white;
+        border: 1px solid #949494;
+        color: #888888;
+        font-size: 11px;
+        overflow: hidden;
+        text-align: left;
+        z-index: 97;
+      }
+      .ui-autocomplete ul {
+        background: none repeat scroll 0 0 white;
+        margin: 0;
+      }
+      .ui-autocomplete li {
+        background-color: #FFFFFF;
+        cursor: pointer;
+        line-height: 11px;
+        padding-bottom: 5px;
+        padding-left: 5px;
+        padding-top: 5px;
+      }
+      .ui-autocomplete li.indent_item {
+        padding-left: 15px;
+      }
+      .ui-autocomplete li.selected {
+        background-color: #BBBBBB;
+        color: #FFFFFF;
+      }
+      .ui-autocomplete li.selected span.episode_count {
+        color: #FFFFFF;
+      }
+      .ui-autocomplete li span.suggest-matched-text {
+        color: #222222;
+      }
+    </style>
 
-      </style>
+    <div id="outerWrapper">
+      <div id="wrapper">
+        <div id="header" class="clearfix">
+          <input spellcheck="false" value="" id="searchBox" class="statusPlaying">
+          <div id ="search-filters"> </div>
 
-      <div id="outerWrapper">
-        <div id="wrapper">
-          <div id="header" class="clearfix">
-            <input spellcheck="false" value="" id="searchBox" class="statusPlaying">
-            <div id ="search-filters"> </div>
+        </div>
 
-          </div>
+        <div id="main" class="clearfix">
+          <%= yield %>
+        </div>
 
-          <div id="main" class="clearfix">
-            <%= yield %>
-          </div>
-
-          <div id="footer" class="clearfix">
-<div id="user_nav">
-        <% if current_user %>
-          Welcome <%= current_user.name %>!
-          <%= link_to "Sign Out", signout_path %>
-        <% else %>
-          <%= link_to "Sign in with Twitter", "/auth/facebook" %>
-        <% end %>
-      </div>
+        <div id="footer" class="clearfix">
+          <div id="user_nav">
+            <% if current_user %>
+              Welcome <%= current_user.name %>!
+              <%= link_to "Sign Out", signout_path %>
+            <% else %>
+              <%= link_to image_tag("fb_login_icon.gif"), "/auth/facebook" %>
+            <% end %>
           </div>
         </div>
       </div>
-    </body>
-  </html>
+    </div>
+  </body>
+</html>

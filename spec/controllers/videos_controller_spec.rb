@@ -2,6 +2,11 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe VideosController do
 
+  before(:each) do
+    @controller.stub(:ensure_logged_in).and_return(true)
+    @controller.stub(:ensure_admin_logged_in).and_return(true)
+  end
+
   def mock_video(stubs={})
     @mock_video ||= mock_model(Video, stubs).as_null_object
   end
@@ -102,5 +107,4 @@ describe VideosController do
       response.should redirect_to(videos_url)
     end
   end
-
 end
