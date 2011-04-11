@@ -22,7 +22,7 @@ class FeedsController < ApplicationController
   def show
     @feed = Feed.find(params[:id])
     @search = @feed.videos.search(params[:search])
-    @videos = @feed.videos.paginate(:page => params[:page], :per_page => 10)
+    @videos = @feed.videos.unapproved.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # show.html.erb
