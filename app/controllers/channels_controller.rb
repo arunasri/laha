@@ -57,5 +57,4 @@ class ChannelsController < ApplicationController
       end
     end
   end
-
 end

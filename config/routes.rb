@@ -1,7 +1,7 @@
 Digital55::Application.routes.draw do
 
   match "/auth/:provider/callback" => "sessions#create"
-  match "/admin"   => "sessions#admin", :as => :signout
+  match "/admin"   => "sessions#admin",   :as => :admin
   match "/signout" => "sessions#destroy", :as => :signout
 
   match '/tags/search',     :to => "tags#search"
