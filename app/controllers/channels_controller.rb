@@ -58,14 +58,4 @@ class ChannelsController < ApplicationController
     end
   end
 
-  private
-
-  def clear_preference
-    self.channel = self.language = nil
-  end
-
-  def update_channel_preference
-    self.language = params[:language]
-    self.channel  = params[:id]
-  end
 end
