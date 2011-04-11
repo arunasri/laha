@@ -1,40 +1,3 @@
-<style>
-
-input[type="checkbox"] {
-    width: 1em;
-}
-
-textarea {
-    height: 15em;
-    width: 95%;
-}
-.info_edit {
-    cursor: pointer;
-    float: right;
-}
-.purr {
-    background-color: #000000;
-    border: 2px solid #FFFFFF;
-    color: #FFFFFF;
-    padding: 20px;
-    position: fixed;
-    right: 15px;
-    top: 20px;
-    width: 324px;
-}
-.purr:hover .close {
-    background: url("/images/close_icon.png") no-repeat scroll 0 0 transparent;
-    display: block;
-    height: 25px;
-    position: absolute;
-    right: 3px;
-    text-indent: -9999px;
-    top: 5px;
-    width: 25px;
-}
-
-</style>
-
 <tr>
   <td><%= render_iframe_box(video,:width=> 250,:height => 200) %></td>
   <td><%= video.name %> </td>
@@ -47,6 +10,6 @@ textarea {
     <%= link_to video.show_name, video.show ? edit_show_path(video.show) : "#" %> 
   </td>
   <td><%= link_to "Edit", edit_video_path(video), :method => :get %> </td>
-  <td><%= link_to 'Destroy', video, :confirm => 'Are you sure?', 
+  <td><%= link_to 'Delete', video, :confirm => 'Are you sure?', 
     :method => :delete, :remote => true, :class => "delete_video" %></td>
 </tr>
