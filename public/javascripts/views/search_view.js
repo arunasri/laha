@@ -3,6 +3,8 @@ App.Views.SearchView = Backbone.View.extend({
 		this.collection = new App.Collections.TagsList();
 		this.el.tokenInput("/tags/search", {
 			queryParam: 'term',
+			theme: "facebook",
+            preventDuplicates: true,
 			onAdd: $.proxy(this.addTerm, this),
 			onDelete: $.proxy(this.deleteTerm, this)
 		});

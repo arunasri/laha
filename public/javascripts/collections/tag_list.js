@@ -3,20 +3,14 @@ App.Collections.TagsList = Backbone.Collection.extend({
 	initialize: function() {
 		this.playList = new App.Collections.PlayList();
         this.playList.tagList = this;
-		this.tagContainer = new App.Views.TagContainerView({
-			el: $("#search-filters"),
-			collection: this
-		});
-		this.bind('add', this.addTag);
+		this.bind('add',    this.addTag);
 		this.bind('remove', this.removeTag);
         _.bindAll(this, 'addTag', 'updatePlayList', 'removeTag');
 	},
 	addTag: function(model) {
-		this.tagContainer.addTag(model);
 		this.updatePlayList();
 	},
 	removeTag: function(model) {
-		this.tagContainer.removeTag(model);
 		this.updatePlayList();
 	},
 	updatePlayList: function(model) {
