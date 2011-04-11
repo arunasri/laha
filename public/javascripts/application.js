@@ -1,15 +1,16 @@
 function onYouTubePlayerReady(playerId) {
 	var ytplayer = document.getElementById("playing");
+	ytplayer.addEventListener("onStateChange", "onPlayerChange");
+
 	window.PlayerView = new App.Views.PlayerView({
 		ytplayer: ytplayer,
 		el: $("#playlistWrapper")
 	});
 	App.init();
-	ytplayer.addEventListener("onStateChange", "onPlayerChange");
 }
 
 function onPlayerChange(newstate) {
-	window.PlayerView.changeState(newstate);
+  window.PlayerView.changeState(newstate);
 }
 
 var App = {

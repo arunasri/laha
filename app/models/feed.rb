@@ -2,8 +2,6 @@ class Feed < ActiveRecord::Base
 
   validates  :name, :uniqueness => true, :presence => true
 
-  validates  :default_channel_id, :presence => true
-
   belongs_to :default_channel, :class_name => 'Channel'
 
   has_many :videos, :autosave => true, :inverse_of => :feed do

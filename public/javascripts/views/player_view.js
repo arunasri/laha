@@ -13,7 +13,6 @@ App.Views.PlayerView = Backbone.View.extend({
 		} else if (e.keyCode == 13) {
 			this.toggle();
 		}
-
 	},
 	toggle: function() {
 		if (this.state === 'play') {
