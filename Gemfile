@@ -4,8 +4,6 @@ gem 'rails', '3.0.5'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem "will_paginate", "~> 3.0.pre2"
 
-gem 'sqlite3-ruby', :require => 'sqlite3'
-
 gem 'haml' #for .scss
 
 gem 'acts-as-taggable-on'
@@ -25,8 +23,6 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'mad_mimi_mailer', '0.2.0'
 
 gem 'delayed_job'
-
-gem 'best_in_place'
 
 gem 'youtube-g', :path => "vendor/gems/youtube-g"
 

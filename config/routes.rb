@@ -1,6 +1,7 @@
 Digital55::Application.routes.draw do
 
   match "/auth/:provider/callback" => "sessions#create"
+  match "/admin"   => "sessions#admin", :as => :signout
   match "/signout" => "sessions#destroy", :as => :signout
 
   match '/tags/search',     :to => "tags#search"
@@ -14,22 +15,7 @@ Digital55::Application.routes.draw do
     get 'latest', :on => :member
   end
 
-  resources :videos do
-    member do
-      get 'next'
-      get 'previous'
-    end
-
-    get 'shows', :on => :collection
-  end
-
-  match '/:language/channels/:id/:page' => 'channels#show', :constraints => { :page => /\d+/ }
-
-  scope ":language" do
-    resources :channels, :except => [ :create, :destroy ]  do
-      resources :videos, :only => [ :index ]
-    end
-  end
+  resources :videos
 
   root :to => "players#play"
 end
