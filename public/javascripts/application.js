@@ -1,6 +1,7 @@
 function onYouTubePlayerReady(playerId) {
 	var ytplayer = document.getElementById("playing");
 	ytplayer.addEventListener("onStateChange", "onPlayerChange");
+	ytplayer.addEventListener("onError", "onPlayerError");
 
 	window.PlayerView = new App.Views.PlayerView({
 		ytplayer: ytplayer,
@@ -13,6 +14,10 @@ function onPlayerChange(newstate) {
 	window.PlayerView.changeState(newstate);
 }
 
+function onPlayerError(error) {
+	window.PlayerView.playNext();
+}
+
 var App = {
 	Views: {},
 	Models: {},
@@ -23,10 +28,6 @@ var App = {
 		Backbone.history.start()
 	}
 };
-
-function _run() {
-	loadPlayer();
-}
 
 jQuery(function($) {
 	currentVideoId = 'USa7JCcgPBA';
