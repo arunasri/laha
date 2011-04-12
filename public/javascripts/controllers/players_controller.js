@@ -8,16 +8,6 @@ App.Controllers.PlayersController = Backbone.Controller.extend({
 	},
 	search: function(query) {
 		$("#searchBox").val(query);
-		var list = []
-		$.each(query.split("#"), function(i, e) {
-			$.getJSON("/tags/search", {
-				term: e,
-                exact: true
-			},
-			function(response) {
-				list << response
-			});
-		});
 		this.view.render();
 	}
 });

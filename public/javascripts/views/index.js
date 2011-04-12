@@ -1,11 +1,13 @@
 App.Views.Index = Backbone.View.extend({
-	initialize: function() {
+	render: function() {
+		var val = $("#searchBox").val();
+		if (this.search) {
+			this.search.remove();
+		}
+		$("#searchBox").val(val);
 		this.search = new App.Views.SearchView({
 			el: $("#searchBox")
 		});
-	},
-    render: function(){
-      this.search.reload();
-    }
+	}
 });
 
