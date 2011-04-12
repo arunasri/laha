@@ -17,17 +17,18 @@ App.Views.PlayListView = Backbone.View.extend({
 	showVideo: function(index) {
 		this.el.find("a:nth-child(" + index + ")").show();
 	},
+
 	render: function() {
 		var max = this.collection.length,
         start = this.collection.currentPlayingIndex(),
-		currentIndex = start;
+		currentIndex = start + 1;
 
 		this.el.find('a').hide();
-		for (var i = start; i < 3; i++) {
+		for (var i = 1; i < 5; i++) {
 		  this.showVideo(currentIndex);
           currentIndex++
-          if ( i >= max ){
-            currentIndex = 0;
+          if ( i > max ){
+            currentIndex = 1;
           }
 		}
 
