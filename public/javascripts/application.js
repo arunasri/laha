@@ -29,6 +29,7 @@ jQuery(function($) {
 		allowScriptAccess: "always"
 	},
 	{
+		allowFullScreen: "true",
 		id: "playing"
 	});
 });
