@@ -12,7 +12,7 @@ class PlayersController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render :json => @videos.map { |r| r.attributes.slice("youtube_id") } }
+      format.json { render :json => @videos.map { |r| r.attributes.slice("youtube_id") }.shuffle }
     end
   end
 
