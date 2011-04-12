@@ -26,8 +26,7 @@ var App = {
 
 jQuery(function($) {
 	swfobject.embedSWF("http://www.youtube.com/v/USa7JCcgPBA&enablejsapi=1&fs=1", "playing", "720", "405", "8", null, null, {
-		allowScriptAccess: "always",
-		allowFullScreen: "true"
+		allowScriptAccess: "always"
 	},
 	{
 		id: "playing"
