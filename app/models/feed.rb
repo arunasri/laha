@@ -2,13 +2,9 @@ class Feed < ActiveRecord::Base
 
   validates  :name, :uniqueness => true, :presence => true
 
-  belongs_to :default_channel, :class_name => 'Channel'
-
   has_many :videos, :autosave => true, :inverse_of => :feed do
     def add_youtube_video(y)
-      build(:language => proxy_owner.default_channel.try(:language)).tap do |t|
-        t.assign_youtube_attributes(y)
-      end
+      build.tap { |t| t.assign_youtube_attributes(y) }
     end
   end
 

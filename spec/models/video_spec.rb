@@ -2,25 +2,6 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Video do
 
-  fixtures :channels
-
-  context "instance with kind and language value" do
-
-    subject { @video }
-
-    before(:each) do
-      @show  = Factory(:show, :name => "TeesMarkhan")
-      @video = Factory(:video, :name => "sheilaki", :kind => "lyric")
-    end
-
-    it "should update channel that it belongs" do
-      subject.language = "hindi"
-      subject.save
-
-      subject.channel_id.should eql(channels(:hindi_lyrics).id)
-    end
-  end
-
   context "#associations" do
     before(:each) { Factory(:video, :youtube_id => "12") }
     it { should belong_to(:show)   }
@@ -192,18 +173,11 @@ describe Video do
   end
 
   context "#scope" do
-
     before(:each) do
       @video1 = Factory(:approved_video, :youtube_id => "1", :published_at => "1/1/2009", :deleted => true)
       @video2 = Factory(:rejected_video, :youtube_id => "2", :published_at => "2/1/2009", :deleted => false)
       @video3 = Factory(:deleted_video, :youtube_id => "3", :published_at => "3/1/2008",  :approved => true)
       @video4 = Factory(:live_video, :youtube_id => "4", :published_at => "5/1/2010",     :approved => false)
-    end
-
-    context "#in_admin_queue" do
-      it "return all unapproved alive videos when argument is nil" do
-        Video.in_admin_queue('all').map(&:id).should =~ [ @video2.id, @video4.id ]
-      end
     end
 
     context "alive" do
@@ -270,22 +244,5 @@ describe Video do
     its(:keywords) { should =~ %w(tv9 telugu) }
     its(:published_at) { should eql("1/12/2009".to_date) }
     its(:description) { should eql("custom description") }
-  end
-  context "Video class when queried for tags" do
-    before(:each) do
-      @show = Factory(:show, :name => "teesmarkhan")
-      @video = Factory(:video, :name => "sheila ke", :kind => "song", :show => @show, :approved => true)
-      @video = Factory(:video, :name => "trailer01", :kind => "trailer", :show => @show, :approved => true)
-    end
-
-    it "should return tags containing 'shakti'" do
-      Video.containing_tag("shei").should eql([{:label => "sheila ke", :category => ""}])
-    end
-
-    it "should return tags containing 'shakti' and also all possible tags" do
-      pending do
-        Video.containing_tag("teesmar").should eql([{:label => "song", :category => "teesmarkhan"}, {:label => "trailer", :category => "teesmarkhan"}])
-      end
-    end
   end
 end

@@ -3,12 +3,12 @@ class Video < ActiveRecord::Base
   acts_as_taggable
 
   attr_accessor   :show_name
+  attr_accessor   :url
 
   serialize  :keywords
 
   belongs_to :show
   belongs_to :feed,   :inverse_of => :videos
-  belongs_to :channel
 
   validates :name,        :presence => true
   validates :youtube_id,  :presence => true, :uniqueness => true
@@ -16,8 +16,6 @@ class Video < ActiveRecord::Base
   validates :language, :inclusion => { :in => %w(telugu hindi), :allow_nil => true }
   validates :kind,     :inclusion => { :in => %w(lyric song movie trailer), :allow_nil => true }
   validate  :validate_show_name
-
-  before_validation :update_channel
 
   before_save :tag_changed, :if => :approved?
 
@@ -33,12 +31,9 @@ class Video < ActiveRecord::Base
     @show_name = show.try(:autocomplete_name)
   end
 
-  def self.in_admin_queue(channel)
-    if !channel || channel == 'all'
-      Video.scoped
-    else
-      Channel.find(channel).videos
-    end.alive.unapproved
+  def url=(url)
+    video_id = CGI.parse(url)[ "http://www.youtube.com/watch?v"].first
+    assign_youtube_attributes(Crawler.client.video_by(video_id))
   end
 
   def assign_youtube_attributes(youtube)
@@ -130,12 +125,6 @@ class Video < ActiveRecord::Base
 
     unless new_tag.blank?
       self.tag_list << new_tag
-    end
-  end
-
-  def update_channel
-    if kind && language
-      self.channel = Channel.send(language).where(:show_association_name => kind.pluralize).first
     end
   end
 end

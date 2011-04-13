@@ -1,11 +1,10 @@
 class Show < ActiveRecord::Base
+
   has_many :songs,    :class_name => 'Video', :conditions => "videos.kind ='song'"
   has_many :lyrics,   :class_name => 'Video', :conditions => "videos.kind ='lyric'"
   has_many :movies,   :class_name => 'Video', :conditions => "videos.kind ='movie'"
   has_many :trailers, :class_name => 'Video', :conditions => "videos.kind ='trailer'"
   has_many :videos
-
-  has_many :channels, :through => :videos
 
   validates :name,     :presence => true, :uniqueness => { :scope => :language }
   validates :language, :presence => true, :inclusion => { :in => %w(telugu hindi) }

@@ -5,9 +5,7 @@ describe Feed do
   context "validations" do
     subject { Factory(:feed) }
     it { should validate_presence_of(:name) }
-    it { should validate_presence_of(:default_channel_id) }
     it { should validate_uniqueness_of(:name) }
-    it { should belong_to(:default_channel) }
   end
 
   context "add_youtube_video" do
@@ -35,17 +33,6 @@ describe Feed do
       video.should_receive(:categories).and_return([double(:term => "News")])
 
       subject.add_youtube_video(video).should be_true
-    end
-
-    it "should set default_channel as video channel to newly added video" do
-      video = Factory.build(:video)
-      video.stub(:unique_id).and_return(video.youtube_id)
-      video.should_receive(:rating).and_return(nil)
-      video.should_receive(:title).and_return(video.name)
-      video.should_receive(:categories).and_return([double(:term => "News")])
-
-      added = subject.add_youtube_video(video)
-      added.language.should eql(subject.default_channel.language)
     end
   end
 

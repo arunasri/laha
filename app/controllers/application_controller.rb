@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
   private
 
   def ensure_logged_in
+    return true if Rails.env.development?
     unless current_user
       redirect_to admin_path
     end
