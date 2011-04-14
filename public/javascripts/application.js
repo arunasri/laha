@@ -39,6 +39,12 @@ jQuery(function($) {
 		allowFullScreen: "true"
 	};
 	swfobject.embedSWF("http://www.youtube.com/v/" + currentVideoId + "&enablejsapi=1&playerapiid=playing" + "&rel=0&autoplay=0&egm=0&loop=0&fs=1&hd=0&showsearch=0&showinfo=0&iv_load_policy=3&cc_load_policy=1&version=3", "playing", "720", "405", "8", null, null, params, atts);
-
+  /**
+	$('#facebook-like').fbLike("http://www.hamarabox.com", {
+		layout: "button_count",
+		font: "lucida grande",
+		color: "dark"
+	});
+    */
 });
 

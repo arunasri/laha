@@ -346,9 +346,40 @@ strong, .selectedThumb {
     opacity: 0.8;
     padding: 0 0 0 11px;
 }
+
 a {
     color: #005A8C;
     cursor: pointer;
     text-decoration: none;
 }
 
+
+#sr-header-area {
+    background-color: #F0F0F0;
+    border-bottom: 1px solid gray;
+    font-size: 90%;
+    overflow: hidden;
+    padding: 3px 0 3px 5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+#sr-header-area {
+    font-size: 90%;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.flat-list {
+    display: inline;
+    list-style-type: none;
+}
+
+.flat-list li {
+    display: inline;
+}
+
+.sr-bar a {
+    color: black;
+    text-decoration: none;
+}

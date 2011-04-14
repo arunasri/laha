@@ -1,14 +1,41 @@
-<tr>
-  <td><%= render_iframe_box(video,:width=> 250,:height => 200) %></td>
-  <td><%= video.name %> </td>
-  <td><%= video.description %> </td>
-  <td><%= video.approved %> </td>
-  <td><%= video.language %> </td>
-  <td><%= video.kind %> </td>
-  <td><%= video.quality %> </td>
-  <td>
-    <%= link_to video.show_name, video.show ? edit_show_path(video.show) : "#" %> 
-  </td>
-  <td><%= link_to "Edit", edit_video_path(video), :method => :get %> </td>
-  <td><%= link_to 'Delete', video, :method => :delete, :remote => true, :class => "delete_video" %></td>
-</tr>
+<style>
+  label { display:block; }
+  tr { 
+    border: 1px solid #CECECE;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .form_demo td{
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+  }
+</style>
+<%= form_for(video, :class => "edit-video") do |f| %>
+  <tr>
+    <td>
+      <%= render_iframe_box(video,:width=> 250,:height => 200) %>
+      <%= link_to 'Delete', video, :method => :delete, :remote => true, :title => "Delete video", :class => "delete_video ui-icon ui-icon-trash" %>
+    </td>
+    <td>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= f.label :show_name %>
+      <%= f.text_field :show_name, :class => "show_name" %>
+      <%= f.label   :approved %>
+      <%= f.select  :approved , [['Disapprove',false], ['Approved', true]] %>
+    </td>
+    <td>
+      <%= f.text_area :description, :rows => 10, :cols => 60 %>
+      <%= f.submit "Save" %>
+    </td>
+    <td>
+      <%= f.label   :language %>
+      <%= f.select  :language , %w(telugu hindi) %>
+      <%= f.label   :kind %>
+      <%= f.select  :kind , [['Video Song', 'song'],['Audio Song','lyric'], ['Trailer', 'trailer'],['Funny','funny']] %>
+      <%= f.label   :quality %>
+      <%= f.select  :quality, %w(hd high middle low) %>
+    </td>
+  </tr>
+<% end %>

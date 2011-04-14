@@ -1,22 +1,6 @@
 <table class="form_demo">
-  <thead class="ui-widget-header">
-    <tr>
-      <th></th>
-      <th><%= sort_link search, :name %></th>
-      <th><%= sort_link search, :description %></th>
-      <th><%= sort_link search, :approved %></th>
-      <th><%= sort_link search, :language %></th>
-      <th><%= sort_link search, :kind %></th>
-      <th><%= sort_link search, :quality %></th>
-      <th><%= sort_link search, :show_name %></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody class="ui-widget-content">
-    <% videos.each do | video | %>
-      <%= render :partial => "/videos/cell", :locals => { :video => video } %>
-    <% end %>
+ <tbody> 
+    <%= render :partial => "/videos/cell", :collection => videos, :as => :video  %>
   </tbody>
 </table>
 

@@ -10,15 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110403191152) do
-
-  create_table "channels", :force => true do |t|
-    t.string   "name"
-    t.string   "language"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "show_association_name"
-  end
+ActiveRecord::Schema.define(:version => 20110414013223) do
 
   create_table "crons", :force => true do |t|
     t.string   "name"
@@ -50,11 +42,10 @@ ActiveRecord::Schema.define(:version => 20110403191152) do
 
   create_table "feeds", :force => true do |t|
     t.string   "name"
-    t.boolean  "approved",           :default => false
-    t.integer  "default_channel_id"
+    t.boolean  "approved",   :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "processed",          :default => false
+    t.boolean  "processed",  :default => false
   end
 
   create_table "shows", :force => true do |t|
@@ -107,7 +98,6 @@ ActiveRecord::Schema.define(:version => 20110403191152) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "deleted",      :default => false, :null => false
-    t.integer  "channel_id"
     t.string   "quality"
     t.string   "language"
     t.integer  "show_id"

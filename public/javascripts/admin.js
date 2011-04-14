@@ -1,5 +1,5 @@
 $(function() {
-	$("#video_show_name").autocomplete({
+	$(".show_name").autocomplete({
 		source: "/shows/query",
 		minLength: 2
 	});

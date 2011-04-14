@@ -14,6 +14,17 @@
     <%= csrf_meta_tag %>
   </head>
   <body>
+
+    <div id="sr-header-area">
+      <ul id="sr-bar" class="flat-list sr-bar hover">
+        <li><%= link_to "songs", "/#telugu#song" %></li>
+      </ul>
+      <span class="separator">&nbsp;|&nbsp;</span>
+      <ul id="sr-bar" class="flat-list sr-bar hover">
+        <li><%= link_to "hd", "/#telugu#song#hd" %></li>
+      </ul>
+    </div>
+
     <div id="outerWrapper">
       <div id="wrapper">
         <div id="header" class="clearfix">
@@ -24,6 +35,7 @@
         <div id="main" class="clearfix">
           <%= yield %>
         </div>
+        <div id='facebook-like'></div>
 
         <div id="footer" class="clearfix">
           <div id="user_nav">
