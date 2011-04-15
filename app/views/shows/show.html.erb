@@ -1,48 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <table width="100%" style="height: 100%;" cellpadding="10" cellspacing="0" border="0">
-  <tr>
-    <td width="20%" valign="top">
-      <%= image_tag @show.default_thumbnail %> 
-    </td>
-    <td width="80%" valign="top">
-      <div id="accordion">
-        <% if @show.movies.first %>
-          <h3><a href="#">Movies</a></h3>
-          <div>
-            <%= render_iframe_box(@show.movies.first, :width=> 250,:height => 200) %> 
-          </div>
+  <tbody>
+    <tr>
+      <th> Name </th>
+      <th> Youtube </th>
+    </tr>
+
+    <% @show.videos.each do | video | %>
+      <tr>
+        <td> <%= link_to video.name, edit_video_path(video) %> </td>
+        <% unless video.youtube_id %> 
+          <%= form_for(video, :class => "edit-video") do |f| %>
+            <td><%= f.label :url, "Youtube url"%></td>
+            <td><%= f.text_field  :url %></td>
+            <td><%= f.submit  %></td>
+          <% end %>
         <% end %>
-        <% if @show.videos.first %>
-          <h3><a href="#">Video Songs</a></h3>
-          <div>
-            <% @show.videos.each do | video | %>
-              <%= image_tag video.default_thumbnail %> 
-            <% end %>
-            <%= button_to 'play all', "#", :class => "play-button" %>
-          </div>
-        <% end %>
-        <% if @show.audios.first %>
-          <h3><a href="#">Audio Songs</a></h3>
-          <div>
-            <% @show.audios.each do | video | %>
-              <%= image_tag video.default_thumbnail %> 
-            <% end %>
-            <%= button_to 'play all', "#", :class => "play-button" %>
-          </div>
-        <% end %>
-        <% if @show.trailers.first %>
-          <h3><a href="#">Trailers</a></h3>
-          <div>
-            <% @show.trailers.each do | video | %>
-              <%= image_tag video.default_thumbnail %> 
-            <% end %>
-            <%= button_to 'play all', "#", :class => "play-button" %>
-          </div>
-        <% end %>
-      </div>
-    </td>
-  </tr>
+      </tr>
+    <% end %>
+
+  </tbody>
 </table>
 
 

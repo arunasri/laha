@@ -1,0 +1,20 @@
+<tr>
+  <td>
+    <%= image_tag video.default_thumbnail %>
+  </td>
+  <td>
+    <%= video.name %>(<%= video.kind %>)
+  </td>
+  <td>
+    <%= video.singers %>
+  </td>
+  <%= form_for(video, :class => "edit-video") do |f| %>
+    <td>
+      <%= f.label :url, "Youtube url" %>
+      <%= f.text_field :url %>
+    </td>
+    <td>
+      <%= f.submit "Save" %>
+    </td>
+  <% end %>
+</tr>

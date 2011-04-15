@@ -2,6 +2,84 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Show do
 
+  context "#when data is set and synced" do
+    subject { @show }
+    before(:each) do
+      @show = Show.new({
+        :language => 'telugu',
+        :data     => File.open("#{Rails.root}/spec/fixtures/html/raaga.html").read
+      })
+      @show.sync
+      @show.save
+      @show.reload
+    end
+
+    it "should create 8 lyrics" do
+      @show.lyrics.length.should eql(8)
+    end
+
+    it "should create 8 video songs" do
+      @show.songs.length.should eql(8)
+    end
+
+    it "should create 8 videos" do
+      @show.videos.length.should eql(16)
+    end
+
+    its(:name)      { should eql("100% Love") }
+    its(:year) { should eql(2011) }
+    its(:cast) { should eql("Naga Chaitanya, Tamanna ") }
+    its(:music_director) { should eql("Devi Sri Prasad") }
+    its("songs.length") { should eql(8) }
+
+    context "for first song" do
+      subject       { @show.songs.to_ary[0] }
+      its(:language){ should eql('telugu') }
+      its(:name)    { should eql("Infatuation") }
+      its(:singers) { should eql("Adnan Sami") }
+      its(:writer)  { should eql("Chandrabose") }
+      its(:approved){ should eql(false) }
+    end
+
+    context "for second song" do
+      subject       { @show.songs.to_ary[1] }
+      its(:language){ should eql('telugu') }
+      its(:name)    { should eql("Thiru Thiru Gananadha") }
+      its(:singers) { should eql("Harini") }
+      its(:writer)  { should eql("Rama Jhogaya Sastry") }
+      its(:approved){ should eql(false) }
+    end
+
+    context "for last song" do
+      subject       { @show.songs.last }
+      its(:language){ should eql('telugu') }
+      its(:name)    { should eql("Diyalo Diyala") }
+      its(:singers) { should eql("Priya Hemesh, Murali") }
+      its(:writer)  { should eql("Chandrabose") }
+      its(:approved){ should eql(false) }
+    end
+  end
+
+  context "#when url is set" do
+    it "should load web page into data" do
+      show = Show.new(:url => "some url")
+      show.should_receive(:load_page).with("some url").and_return('data')
+      show.should_receive(:sync)
+      show.save
+
+      show.data.should eql('data')
+    end
+
+    it "should not load web page into data for existing record" do
+      show = Factory(:show)
+      show.url="some url"
+      show.should_receive(:load_page).with("some url").never
+      show.save
+
+      show.data.should be_nil
+    end
+  end
+
   context "#scopes" do
     it "should determine movies released in year 2009" do
       show1 = Factory(:show, :started_on => "1/1/2009")

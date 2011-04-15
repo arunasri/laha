@@ -10,14 +10,22 @@ class Video < ActiveRecord::Base
   belongs_to :show
   belongs_to :feed,   :inverse_of => :videos
 
-  validates :name,        :presence => true
-  validates :youtube_id,  :presence => true, :uniqueness => true
-  validates :quality,  :inclusion => { :in => %w(hd high medium low), :allow_nil => true }
-  validates :language, :inclusion => { :in => %w(telugu hindi), :allow_nil => true }
-  validates :kind,     :inclusion => { :in => %w(lyric song movie trailer), :allow_nil => true }
-  validate  :validate_show_name
+  validates_presence_of   :name
+  validates_presence_of   :youtube_id, :language, :quality, :kind, :if => :approved?
+  validates_uniqueness_of :youtube_id, :allow_nil => true
 
-  before_save :tag_changed, :if => :approved?
+  validates :quality,  :inclusion => { :in => %w(hd high medium low), :allow_nil => true }, :if => :approved?
+  validates :language, :inclusion => { :in => %w(telugu hindi), :allow_nil => true }, :if => :approved?
+  validates :kind,     :inclusion => { :in => %w(lyric song movie trailer spoof), :allow_nil => true }, :if => :approved?
+
+  validate  :validate_show_name
+  validate  :verify_youtube_url_given,     :if => :url
+
+  before_validation :extract_from_youtube, :if => :url
+
+  before_save :disapprove,  :if     => :deleted?
+  before_save :tag_changed, :if     => :approved?
+  before_save :remove_tags, :unless => :approved?
 
   scope :alive,       where(:deleted  => false)
   scope :deleted,     where(:deleted  => true )
@@ -31,32 +39,40 @@ class Video < ActiveRecord::Base
     @show_name = show.try(:autocomplete_name)
   end
 
-  def url=(url)
-    video_id = CGI.parse(url)[ "http://www.youtube.com/watch?v"].first
-    assign_youtube_attributes(Crawler.client.video_by(video_id))
+  def extract_from_youtube
+    if video_id_from_url = extract_youtube_id
+      @youtube = begin
+        Crawler.client.video_by(video_id_from_url)
+      rescue
+        nil
+      end
+      if @youtube
+        assign_youtube_attributes_for_known(@youtube)
+        self.name ||= @youtube.title
+      end
+    end
+  end
+
+  def extract_youtube_id
+    /youtube.com.*(?:\/|v=)(\w+)/.match(url).try(:[], 1)
   end
 
   def assign_youtube_attributes(youtube)
+    assign_youtube_attributes_for_known(youtube).tap do |t|
+      t.name = youtube.title
+    end
+  end
+
+  def assign_youtube_attributes_for_known(youtube)
     logger.info "processing youtube video: #{youtube.unique_id}"
 
     attrs = %w(keywords racy description duration published_at view_count)
     attrs.each { |a| send("#{a}=", youtube.send(a)) }
 
-    self.name       = youtube.title
     self.category   = youtube.categories[0].term
     self.rating     = youtube.rating.try(:average)
     self.youtube_id = youtube.unique_id
-  end
-
-  def to_param
-    # if the title has some special characters then parameterize uses something from ActiveSupport
-    # which is not present in models and it throws exception. Hence ther rescue thing
-    # https://rails.lighthouseapp.com/projects/8994/tickets/2308
-    begin
-      "#{id}-#{name.parameterize}"
-    rescue Exception => e
-      id.to_s
-    end
+    self
   end
 
   def self.to_display(page)
@@ -68,7 +84,7 @@ class Video < ActiveRecord::Base
   end
 
   def default_thumbnail
-    "http://i2.ytimg.com/vi/#{youtube_id}/default.jpg"
+    "http://i2.ytimg.com/vi/#{youtube_id|| 'vQdQ2xnH0'}/default.jpg"
   end
 
   # embed url
@@ -104,6 +120,12 @@ class Video < ActiveRecord::Base
 
   private
 
+  def verify_youtube_url_given
+    if @url.present? && @youtube.nil?
+      errors.add(:url, "invalid url")
+    end
+  end
+
   def validate_show_name
     if @show_name && show_id.nil?
       errors.add(:show_name, "Unknown show name")
@@ -126,5 +148,14 @@ class Video < ActiveRecord::Base
     unless new_tag.blank?
       self.tag_list << new_tag
     end
+  end
+
+  def remove_tags
+    self.tag_list = []
+  end
+
+  def disapprove
+    self.approved = false
+    true
   end
 end

@@ -1,6 +1,8 @@
 class ShowsController < ApplicationController
   layout 'admin'
 
+  before_filter :set_current_videos_path, :only => [ :show, :edit ]
+
   def query
     @shows = Show.where(:name.like => "%#{params[:term]}%")
     respond_to do |format|
@@ -42,11 +44,15 @@ class ShowsController < ApplicationController
     end
   end
 
+  def image
+    @show = Show.find(params[:id])
+    send_data @show.image, :type => 'image/jpg',:disposition => 'inline'
+  end
+
   # GET /shows/1/edit
   def edit
     @show = Show.find(params[:id])
-    @search = @show.videos.search(params[:search])
-    @videos = @show.videos.paginate(:page => params[:page])
+    @videos = @show.songs.paginate(:page => params[:page])
   end
 
   # POST /shows
@@ -56,7 +62,7 @@ class ShowsController < ApplicationController
 
     respond_to do |format|
       if @show.save
-        format.html { redirect_to(@show, :notice => 'Show was successfully created.') }
+        format.html { redirect_to(edit_show_path(@show), :notice => 'Show was successfully created.') }
         format.xml  { render :xml => @show, :status => :created, :location => @show }
       else
         format.html { render :action => "new" }

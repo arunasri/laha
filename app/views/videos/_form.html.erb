@@ -6,7 +6,9 @@
 </style>
 
 <div class="admin-video">
-  <%= render_iframe_box(@video,:width=> 450,:height => 350) %> 
+  <% if @video.youtube_id %>
+    <%= render_iframe_box(@video,:width=> 450,:height => 350) %> 
+  <% end %>
 </div>
 
 <%= form_for(@video, :class => "edit-video") do |f| %>

@@ -1,0 +1,21 @@
+<%= form_for(video, :class => "edit-video") do |f| %>
+  <tr>
+    <td>
+      <%= video.name %>
+      <%= render_iframe_box(video,:width=> 250,:height => 200) %>
+      <%= link_to 'Delete', video, :method => :delete, :remote => true, :title => "Delete video", :class => "delete_video ui-icon ui-icon-trash" %>
+    </td>
+    <td>
+      <%= f.label   :approved %>
+      <%= f.select  :approved , [['Disapprove',false], ['Approved', true]] %>
+    </td>
+    <td>
+      <%= f.text_area :description, :rows => 10, :cols => 60 %>
+      <%= f.submit "Save" %>
+    </td>
+    <td>
+      <%= f.label   :quality %>
+      <%= f.select  :quality, %w(hd high middle low) %>
+    </td>
+  </tr>
+<% end %>

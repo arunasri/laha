@@ -28,5 +28,6 @@ stylesheets:
     - public/stylesheets/main.css
     - public/stylesheets/vendor/token-input/*.css
   admin:
+    - public/stylesheets/flash.css
     - public/stylesheets/vendor/formalize/*.css
     - public/stylesheets/Aristo/jquery-ui-1.8.7.custom.css

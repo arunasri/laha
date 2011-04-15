@@ -13,20 +13,14 @@
   <table class="form_demo">
     <tbody>
       <tr>
-        <th><%= f.label :name %></th>
-        <td><%= f.text_field :name %></td>
-      </tr>
-      <tr>
-        <th><%= f.label :language %></th>
+        <th><%= f.label :url, "Raga Page:" %></th>
         <td>
-          <%= f.radio_button :language, "telugu" %>
-          <%= label_tag 'language_teugu', "Telugu" %>
-          <%= f.radio_button :language, "hindi" %>
-          <%= label_tag 'language_hindi', "Hindi" %>
+          <%= f.text_field :url %>
         </td>
       </tr>
       <tr>
         <th>
+          <%= f.hidden_field :language,  :value => 'telugu' %>
         </th>
         <td>
           <%= f.submit %>

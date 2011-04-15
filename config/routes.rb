@@ -9,6 +9,7 @@ Digital55::Application.routes.draw do
 
   resources :shows do
     get 'query', :on => :collection
+    get 'image', :on => :member
   end
 
   resources :feeds do

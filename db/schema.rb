@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110414013223) do
+ActiveRecord::Schema.define(:version => 20110414214404) do
 
   create_table "crons", :force => true do |t|
     t.string   "name"
@@ -60,6 +60,10 @@ ActiveRecord::Schema.define(:version => 20110414013223) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "language"
+    t.string   "url"
+    t.text     "data",           :limit => 2147483647
+    t.binary   "image"
+    t.string   "music_director"
   end
 
   create_table "taggings", :force => true do |t|
@@ -109,10 +113,13 @@ ActiveRecord::Schema.define(:version => 20110414013223) do
     t.integer  "view_count"
     t.boolean  "racy",         :default => false
     t.string   "kind"
+    t.string   "singers"
+    t.string   "writer"
+    t.string   "cast"
   end
 
   create_table "wiki_pages", :force => true do |t|
-    t.text     "data"
+    t.text     "data",       :limit => 2147483647
     t.string   "url"
     t.string   "language"
     t.datetime "created_at"

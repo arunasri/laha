@@ -2,10 +2,48 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Video do
 
+  context "#youtube id extractor" do
+
+    it "should get when url format is http://www.youtube.com/watch?v=id" do
+      video = Video.new(:url => "http://www.youtube.com/watch?v=234")
+      video.send(:extract_youtube_id).should eql("234")
+    end
+
+    it "should get when url format is http://www.youtube.com/user/IleanaDCruzTV#p/a/u/2/12a" do
+      video = Video.new(:url => "http://www.youtube.com/user/IleanaDCruzTV#p/a/u/2/12a")
+      video.send(:extract_youtube_id).should eql("12a")
+    end
+
+  end
+
+  context "when invalid url format is given" do
+    subject { Factory(:video) }
+
+    it "should raise error" do
+      subject.url = "ksdf"
+      subject.should_not be_valid
+    end
+
+    it "should raise with invalid video id" do
+      subject.url = "http://www.youtube.com/user/IleanaDCruzTV#p/a/u/2/12a"
+      client = double()
+      client.should_receive(:video_by).with("12a").and_return(nil)
+      Crawler.should_receive(:client).and_return(client)
+
+      subject.should_not be_valid
+    end
+  end
+
   context "#associations" do
     before(:each) { Factory(:video, :youtube_id => "12") }
     it { should belong_to(:show)   }
     it { should belong_to(:feed)   }
+  end
+
+  context "when deleted" do
+    before(:each) { Factory(:video, :approved => true, :deleted => true, :youtube_id => "12") }
+    its("tag_list.size") { should eql(0) }
+    its(:approved) { should eql(false) }
   end
 
   context "#know?" do
@@ -20,15 +58,14 @@ describe Video do
     end
   end
 
-  context "#validations" do
-    subject { Factory(:video, :youtube_id => "12") }
+  context "#validations when approved" do
+    subject { Factory(:video, :youtube_id => "12", :approved => true) }
     it { should validate_presence_of(:youtube_id)   }
     it { should validate_uniqueness_of(:youtube_id) }
     it { should validate_presence_of(:name)        }
 
     it { should allow_value('telugu').for(:language) }
     it { should allow_value('hindi').for(:language) }
-    it { should allow_value(nil).for(:language) }
 
     it { should_not allow_value('english').for(:language) }
     it { should_not allow_value('tamil').for(:language) }
@@ -50,6 +87,20 @@ describe Video do
   end
 
   context "#callbacks" do
+
+    it "should not create any tags for unapproved" do
+      video = Factory(:telugu_video, :approved => false)
+      video.tag_list.should be_empty
+    end
+
+    it "should remove all tags when disapproved" do
+      video = Factory(:telugu_video, :approved => true)
+      video.tag_list.should_not be_empty
+
+      video.update_attributes(:approved => false)
+      video.tag_list.should be_empty
+    end
+
     it "should create tag on language" do
       video = Factory(:telugu_video, :approved => true)
       video.tag_list.should include('telugu')
@@ -79,12 +130,12 @@ describe Video do
     end
 
     it "should create tag on kind" do
-      video = Factory(:telugu_video, :kind => "song")
+      video = Factory(:approved_video, :kind => "song")
       video.tag_list.should include('song')
     end
 
     it "should update tag on kind" do
-      video = Factory(:telugu_video, :kind => "song")
+      video = Factory(:approved_video, :kind => "song")
       video.tag_list.should include('song')
 
       video.update_attributes(:kind => 'lyric')
@@ -94,17 +145,17 @@ describe Video do
     end
 
     it "should create tag on quality of video" do
-      video = Factory(:hd_video)
+      video = Factory(:hd_video, :approved => true, :quality => 'hd')
       video.tag_list.should include('hd')
     end
 
     it "should create tag on show name" do
-      video = Factory(:hd_video)
+      video = Factory(:approved_video)
       video.tag_list.should include(video.show.name)
     end
 
     it "should update tag on show name" do
-      video = Factory(:hd_video)
+      video = Factory(:approved_video)
       first = video.show
       video.tag_list.should include(first.name)
       second = Factory(:show)
@@ -116,7 +167,7 @@ describe Video do
     end
 
     it "should update tag on quality" do
-      video = Factory(:telugu_video, :quality => "hd")
+      video = Factory(:approved_video, :quality => "hd")
       video.tag_list.should include('hd')
 
       video.update_attributes(:quality => 'medium')
@@ -126,7 +177,7 @@ describe Video do
     end
 
     it "should append to tags on language" do
-      video = Factory(:hindi_video, :tag_list => "hulchul, video song")
+      video = Factory(:hindi_video, :approved => true, :tag_list => "hulchul, video song")
       video.tag_list.should include('hindi', 'hulchul','video song')
     end
   end
@@ -142,24 +193,6 @@ describe Video do
     it "will set deleted flag to true" do
       subject.delete!
       subject.delete.should be_true
-    end
-  end
-
-  context "#to-param" do
-    it "include name of the video" do
-      video = Video.new(:name => "something")
-      video.should_receive(:id).and_return(23)
-      video.to_param.should eql("23-something")
-    end
-
-    it "return id of the video if any exception raises" do
-      video = Video.new
-      name = double()
-      name.should_receive(:parameterize).and_raise(Exception)
-      video.stub(:id).and_return(23)
-      video.stub(:name).and_return(name)
-
-      video.to_param.should eql("23")
     end
   end
 
@@ -194,13 +227,13 @@ describe Video do
 
     context "approved" do
       it "returns all videos which are approved" do
-        Video.approved.map(&:id).should =~ [@video1.id, @video3.id]
+        Video.approved.map(&:id).should be_empty
       end
     end
 
     context "unapproved" do
       it "returns all videos which are un approved" do
-        Video.unapproved.map(&:id).should =~ [@video2.id, @video4.id]
+        Video.unapproved.map(&:id).should =~ [@video1.id, @video2.id, @video3.id, @video4.id]
       end
     end
 
@@ -235,14 +268,14 @@ describe Video do
       subject.assign_youtube_attributes(youtube)
     end
 
-    its(:youtube_id) { should eql("12344") }
-    its(:view_count) { should eql(24) }
-    its(:rating) { should eql(2.4) }
-    its(:racy) { should eql(true) }
-    its(:category) { should eql("news") }
-    its(:name) { should eql("mytitle") }
-    its(:keywords) { should =~ %w(tv9 telugu) }
-    its(:published_at) { should eql("1/12/2009".to_date) }
-    its(:description) { should eql("custom description") }
+    its(:youtube_id)    { should eql("12344") }
+    its(:view_count)    { should eql(24) }
+    its(:rating)        { should eql(2.4) }
+    its(:racy)          { should eql(true) }
+    its(:category)      { should eql("news") }
+    its(:name)          { should eql("mytitle") }
+    its(:keywords)      { should =~ %w(tv9 telugu) }
+    its(:published_at)  { should eql("1/12/2009".to_date) }
+    its(:description)   { should eql("custom description") }
   end
 end
