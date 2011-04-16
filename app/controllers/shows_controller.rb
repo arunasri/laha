@@ -1,6 +1,8 @@
 class ShowsController < ApplicationController
   layout 'admin'
 
+  before_filter :ensure_logged_in
+  before_filter :ensure_admin_logged_in
   before_filter :set_current_videos_path, :only => [ :show, :edit ]
 
   def query
