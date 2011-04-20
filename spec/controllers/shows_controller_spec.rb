@@ -6,6 +6,11 @@ require 'spec_helper'
 
 describe ShowsController do
 
+  before(:each) do
+    @controller.stub(:ensure_logged_in).and_return(true)
+    @controller.stub(:ensure_admin_logged_in).and_return(true)
+  end
+
   def mock_show(stubs={})
     @mock_show ||= mock_model(Show, stubs).as_null_object
   end
@@ -61,7 +66,7 @@ describe ShowsController do
       it "redirects to the created show" do
         Show.stub(:new) { mock_show(:save => true) }
         post :create, :show => {}
-        response.should redirect_to(show_url(mock_show))
+        response.should redirect_to(edit_show_url(mock_show))
       end
     end
 

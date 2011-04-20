@@ -1,4 +1,5 @@
 class ShowsController < ApplicationController
+
   layout 'admin'
 
   before_filter :ensure_logged_in
